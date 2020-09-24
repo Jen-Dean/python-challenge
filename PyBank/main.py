@@ -3,7 +3,7 @@ import os
 import csv
 
 #State the Variables Needed
-MonthCount = 0
+MonthCount = 1
 NetRevenue = 0
 MaxRevenue = 0
 MinRevenue = 0
@@ -23,8 +23,9 @@ with open(budget_csv) as csvfile:
     #Find the Header and First Row
     csv_header = next(csv_reader)
     firstrow = next(csv_reader)
-    rowbefore = (int(firstrow[1])
+    rowbefore = (int(firstrow[1]))
 
+    Revenue.append(int(firstrow[1]))
     #Create the Loop to go through all the rows:
     for row in csv_reader:
         #Count the total rows in column 0 (MonthCount)
@@ -34,20 +35,18 @@ with open(budget_csv) as csvfile:
         #Add the Months to a database in Python [Month]
         Month.append(str(row[0]))
         #Get the month to month change and store it
-        #MoMChange = int(row[1]) - rowbefore
-        #AvgChange.append(MoMChange)
-        #rowbefore = int(row[1])
-
-
+        MoMChange = int(row[1]) - rowbefore
+        AvgChange.append(MoMChange)
+        rowbefore = int(row[1])
 
 #Zipper the Data Together so you can pull the information later
-Zipped = zip(Month, Revenue)
+Zipped = zip(Month, Revenue, AvgChange)
 
 #Get the total, min and max of the integers in the list
 NetRevenue = sum(Revenue)
-#AvgRevenue = round((sum(AvgChange)/len(AvgChange)), 2)
-MaxRevenue = max(Revenue)
-MinRevenue = min(Revenue)
+AvgRevenue = round((sum(AvgChange)/len(AvgChange)), 2)
+MaxRevenue = max(AvgChange)
+MinRevenue = min(AvgChange)
 
 #Format the numbers to show correct currency
 FormatNet = "${:,.2f}".format(NetRevenue)
@@ -57,9 +56,9 @@ FormatMin = "${:,.2f}".format(MinRevenue)
 
 #find the month row and with the Max/Min and print
 for row in Zipped:
-    if row[1] == MaxRevenue:
+    if row[2] == MaxRevenue:
         MaxRevMonth = str(f"{row[0]}, {FormatMax}")    
-    if row[1] == MinRevenue:
+    if row[2] == MinRevenue:
         MinRevMonth = str(f"{row[0]}, {FormatMin}")
 
 #Print the Results
