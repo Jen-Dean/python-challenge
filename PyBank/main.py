@@ -16,7 +16,10 @@ Revenue = []
 AvgChange = []
 
 #join the file information to read from
-budget_csv = os.path.join("/Users/jenniferdean/Desktop/DATA_SCIENCE_BOOTCAMP/GitHub/HOMEWORK/python-challenge/PyBank/Resources/budget_data.csv")
+budget_csv = os.path.join("Resources", "budget_data.csv")
+
+print(budget_csv)
+
 with open(budget_csv) as csvfile:
     csv_reader = csv.reader(csvfile, delimiter=",")
     

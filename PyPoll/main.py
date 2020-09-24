@@ -15,7 +15,8 @@ OTooleyCount = 0
 
 Winner = "jenniferdean"
 
-election_csv = os.path.join("/Users/jenniferdean/Desktop/DATA_SCIENCE_BOOTCAMP/GitHub/HOMEWORK/python-challenge/PyPoll/Resources/election_data.csv")
+election_csv = os.path.join("Resources", "election_data.csv")
+
 with open(election_csv) as csvfile:
     csv_reader = csv.reader(csvfile, delimiter=",")
     #Remove the Header from the document
