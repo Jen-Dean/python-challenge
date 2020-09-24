@@ -35,6 +35,18 @@ CorreyCount = CandidateList.count("Correy")
 LiCount = CandidateList.count("Li")
 OTooleyCount = CandidateList.count("O'Tooley")
 
+#The percentage of votes each candidate won
+KhanPercent = (KhanCount / TotalVotes)
+CorreyPercent = (CorreyCount / TotalVotes)
+LiPercent = (LiCount / TotalVotes)
+OTooleyPercent = (OTooleyCount / TotalVotes)
+
+#Format the variable to a percentage
+KhanPercent = "{:.2%}".format(KhanPercent)
+CorreyPercent = "{:.2%}".format(CorreyPercent)
+LiPercent = "{:.2%}".format(LiPercent)
+OTooleyPercent = "{:.2%}".format(OTooleyPercent)
+
 #The winner of the election based on popular vote.
 CanVoteList = [KhanCount, CorreyCount, LiCount, OTooleyCount]
 
@@ -51,20 +63,10 @@ else:
 print("Election Results")
 print("-------------------------")
 print(f"Total Votes: {TotalVotes}")
-print(f"Khan: %%% ({KhanCount})")
-print(f"Correy: %%% ({CorreyCount})")
-print(f"Li: %%% ({LiCount})")
-print(f"O'Tooley: %%% ({OTooleyCount})")
+print(f"Khan: {KhanPercent}, ({KhanCount})")
+print(f"Correy: {CorreyPercent}, ({CorreyCount})")
+print(f"Li: {LiPercent}, ({LiCount})")
+print(f"O'Tooley: {OTooleyPercent}, ({OTooleyCount})")
 print(f"Winner: {Winner}")
 
 #zipper = zip(VoterIDList, CandidateList)
-
-
-
-
-
-
-#The percentage of votes each candidate won
-
-
-
