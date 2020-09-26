@@ -1,5 +1,6 @@
 import os
 import csv
+import sys
 
 
 TotalVotes = 0
@@ -13,9 +14,9 @@ CorreyCount = 0
 LiCount = 0
 OTooleyCount = 0
 
-Winner = "jenniferdean"
+Winner = "JenniferDean"
 
-election_csv = os.path.join("Resources", "election_data.csv")
+election_csv = os.path.join("PyPoll/Resources/election_data.csv")
 
 with open(election_csv) as csvfile:
     csv_reader = csv.reader(csvfile, delimiter=",")
@@ -51,7 +52,7 @@ OTooleyPercent = "{:.2%}".format(OTooleyPercent)
 #The winner of the election based on popular vote.
 CanVoteList = [KhanCount, CorreyCount, LiCount, OTooleyCount]
 
-if (max(CanVoteList)) == KhanCount:
+if max(CanVoteList) == KhanCount:
     Winner = "Khan"
 elif max(CanVoteList) == CorreyCount:
     Winner = "Correy"
@@ -64,10 +65,25 @@ else:
 print("Election Results")
 print("-------------------------")
 print(f"Total Votes: {TotalVotes}")
+print("-------------------------")
 print(f"Khan: {KhanPercent}, ({KhanCount})")
 print(f"Correy: {CorreyPercent}, ({CorreyCount})")
 print(f"Li: {LiPercent}, ({LiCount})")
 print(f"O'Tooley: {OTooleyPercent}, ({OTooleyCount})")
+print("-------------------------")
 print(f"Winner: {Winner}")
+print("-------------------------")
 
-#zipper = zip(VoterIDList, CandidateList)
+sys.stdout = open("PyPoll/Analysis/Analysis.txt", 'w')
+print("Election Results")
+print("-------------------------")
+print(f"Total Votes: {TotalVotes}")
+print("-------------------------")
+print(f"Khan: {KhanPercent}, ({KhanCount})")
+print(f"Correy: {CorreyPercent}, ({CorreyCount})")
+print(f"Li: {LiPercent}, ({LiCount})")
+print(f"O'Tooley: {OTooleyPercent}, ({OTooleyCount})")
+print("-------------------------")
+print(f"Winner: {Winner}")
+print("-------------------------")
+sys.stdout.close()

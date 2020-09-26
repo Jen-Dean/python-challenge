@@ -1,6 +1,7 @@
 #Import Needed Modules
 import os
 import csv
+import sys
 
 #State the Variables Needed
 MonthCount = 1
@@ -16,7 +17,7 @@ Revenue = []
 AvgChange = []
 
 #join the file information to read from
-budget_csv = os.path.join("Resources", "budget_data.csv")
+budget_csv = os.path.join("PyBank/Resources/budget_data.csv")
 
 print(budget_csv)
 
@@ -72,3 +73,14 @@ print(f"Total: {FormatNet}")
 print(f"Average Change: {FormatAvg}")
 print(f"Greatest Increase in Profits: {MaxRevMonth}")
 print(f"Greatest Decrease in Profits: {MinRevMonth}")
+
+
+sys.stdout = open("PyBank/Analysis/Analysis.txt", 'w') 
+print("Financial Analysis")
+print("----------------------------")
+print(f"Total Months: {MonthCount}")
+print(f"Total: {FormatNet}")
+print(f"Average Change: {FormatAvg}")
+print(f"Greatest Increase in Profits: {MaxRevMonth}")
+print(f"Greatest Decrease in Profits: {MinRevMonth}")
+sys.stdout.close()
